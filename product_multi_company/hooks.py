@@ -15,7 +15,8 @@ def post_init_hook(cr, registry):
         rule.write({
             'active': True,
             'domain_force': (
-                "['|', ('company_ids', 'in', user.company_id.ids),"
+                "['|', '|', ('company_id', '=', user.company_id.id),"
+                " ('company_ids', 'in', user.company_id.ids),"
                 " ('company_id', '=', False)]"
             ),
         })
